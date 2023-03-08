@@ -50,10 +50,23 @@ with open('8_ApartmentsLite.csv', 'r', encoding='utf-8') as archivo:
         lista_nums_registros.append(tupla_valor[0])
         diccionario1[(tupla_valor[0], tupla_valor[-1])] = tupla_valor
 
+
 print(lista_nums_registros)
 print(diccionario1)
 
-print(diccionario1.get())
+# Recorrido para obtener las tuplas clave.
+lista_claves = list()
+for clave in diccionario1.keys():
+    lista_claves.append(clave)
+print(lista_claves)
+# Recorrido para obtener el valor del primer indice de las tuplas clave.
+lista_valores = []
+for tupla in lista_claves:
+    lista_valores.append(tupla[0])
+print(lista_valores)
+
+
+
 
 def nuevo_registro():
 #   Nuevo registro generado a partir de una lista modelo. Lista que hace referencia a los indices de la cabecera del dataset.
@@ -78,11 +91,18 @@ def nuevo_registro():
 
     diccionario2 = dict()
     diccionario2[(tupla_list_nueva[0], tupla_list_nueva[-1])] = tupla_list_nueva
-    print([(tupla_list_nueva[0])])
-    print([(tupla_valor[0])])
-# nuevo_registro()
-    # if diccionario2[(tupla_list_nueva[0], tupla_list_nueva[-1])] == diccionario1[(tupla_valor[0], tupla_valor[-1])]:
-    #     print("Registro no valido. El numero y region del nuevo registro ya existen")
-    #     print("Vuela a ingresar un registro valido.")
+
+
+#   Evaluar si el primer indice de la nueva lista y el primer indice de la tupla clave son iguales
+    print(tupla_list_nueva[0])
+    valor = lista_valores.index(tupla_list_nueva[0])
+    print(valor)
+    print(lista_valores[valor])
+#     print("Registro no valido. El nuevo registro ya existen")
+
+nuevo_registro()
+
+# def valor_valido():
+#     valor = lista_valores.index(tupla_list_nueva[0])
 
 
