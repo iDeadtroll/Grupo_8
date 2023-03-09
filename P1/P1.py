@@ -32,7 +32,7 @@ def nuevo_registro():
 #   Nuevo registro generado a partir de una lista modelo. Lista que hace referencia a los indices de la cabecera del dataset.
     lista_modelo = ["numero", "sumary", "description", "location", "photo", "recomendado", "price", "size", "rooms",
                     "price/m2", "bathrooms", "Num Photos", "type", "region"]
-    print("Introdusca nuevo registro")
+    print("Introduzca nuevo registro")
 
 #   "lista_nueva" que contendra el mismo numero de elementos que la "lista_modelo"
     lista_nueva = []
