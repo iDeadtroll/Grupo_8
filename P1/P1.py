@@ -1,19 +1,21 @@
+# Usamos csv para
 import csv
 with open('8_ApartmentsLite.csv', 'r', encoding='utf-8') as archivo:
     contenido = csv.reader(archivo,delimiter=',')
-    # print(contenido)
-    next(contenido)
 
+# Empesamos a leer el contenido desde la segunda linea
+    next(contenido)
+#   Recorrido para construir el diccionario y la lista de los primeros valores de cada linea.
     diccionario1 = dict()
     lista_nums_registros = list()
     for linea in contenido:
         tupla_valor = tuple(linea)
         lista_nums_registros.append(tupla_valor[0])
+
         tupla_clave = (tupla_valor[0], tupla_valor[-1])
         diccionario1[tupla_clave] = tupla_valor
 
-# print(lista_nums_registros)
-print(diccionario1)
+print(lista_nums_registros)
 
 # Recorrido para obtener las tuplas clave.
 lista_claves = list()
@@ -49,6 +51,8 @@ def nuevo_registro():
 
     diccionario2 = dict()
     diccionario2[(tupla_list_nueva[0], tupla_list_nueva[-1])] = tupla_list_nueva
+    diccionario1.update(diccionario2)
+    print(diccionario1)
 
 
 #   Evaluar si el primer indice de la nueva lista y el primer indice de la tupla clave son iguales
@@ -61,12 +65,11 @@ def nuevo_registro():
 #     print("Registro no valido. El nuevo registro ya existen")
 
 
-# Funcion que muestra las opciones del programa
+
 def tabla_diccionario():
 
-    for i in diccionario1.values():
-        print(f'{i}')
-
+    for k, v in diccionario1.items():
+        print(' | '.join(map(str,v)))
 
 def borrar_registro():
 
@@ -79,7 +82,7 @@ def borrar_registro():
     print(diccionario1)
 
 
-def busca_valor_clave():
+def busca_clave_mostrar_valor():
 
     print("Clave formada por una tupla (prime indice, segundo indice)")
     a = input("Introduce el primer indice de la tupla")
@@ -98,7 +101,6 @@ def mostrarOpciones():
 
 # Menu que muestra las opciones y evalua la opcion seleccionada
 
-
 while True:
     print(mostrarOpciones())
     opt = input("Seleccione una opcion (1-5): ")
@@ -110,7 +112,7 @@ while True:
             nuevo_registro()
         case "2":
             print("Opcion: Buscar un registro por su clave y mostrar sus valores", end="\n\n")
-            busca_valor_clave()
+            busca_clave_mostrar_valor()
         case "3":
             print("Borrar un registro a partir de su clave", end="\n\n")
             borrar_registro()
@@ -124,9 +126,3 @@ while True:
 
     input("Precione una tecla para volver al menu")
 
-
-
-# with open(r"C:\Users\joni-\Documents\FSI_EPDs\Grupo_8\P1\8_ApartmentsLite.csv", "r") as archivo:
-#     contenido = archivo.read()
-#   # for row in contenido:
-#     print(contenido)
