@@ -63,9 +63,13 @@ def nuevo_registro():
 
 # Funcion que muestra las opciones del programa
 def tabla_diccionario():
-    for tupla_clave, tupla_valor in diccionario1.items():
-        print(f'{tupla_valor}')
+
+    for i in diccionario1.values():
+        print(f'{i}')
+
+
 def borrar_registro():
+
     print(diccionario1)
     print("Clave formada por una tupla (prime indice, segundo indice)")
     a = input("Introduce el primer indice de la tupla")
@@ -75,8 +79,8 @@ def borrar_registro():
     print(diccionario1)
 
 
-
 def busca_valor_clave():
+
     print("Clave formada por una tupla (prime indice, segundo indice)")
     a = input("Introduce el primer indice de la tupla")
     b = input("Introduce el segundo indice de la tupla")
@@ -95,45 +99,30 @@ def mostrarOpciones():
 # Menu que muestra las opciones y evalua la opcion seleccionada
 
 
-# while True:
-#     print(mostrarOpciones())
-#     opt = input("Seleccione una opcion (1-5): ")
-#     print("\n")
-#     if opt=="1":
-#         print("Opcion: Agregar nuevo registro", end="\n\n")
-#         nuevo_registro()
-#     elif opt=="2":
-#         print("Opcion: Buscar un registro por su clave y mostrar sus valores", end="\n\n")
-#         # busca_valor_clave()
-#     elif opt=="3":
-#         print("Borrar un registro a partir de su clave", end="\n\n")
-#     elif opt=="4":
-#         print("Listar todos los registros en formato de tabla", end="\n\n")
-#     elif opt=="5":
-#         print("Adios", end="\n\n")
-#         break
-#     else:
-#         print("Opcion  invalida", end="\n\n")
+while True:
+    print(mostrarOpciones())
+    opt = input("Seleccione una opcion (1-5): ")
+    print("\n")
 
-print(mostrarOpciones())
-opt = input("Seleccione una opcion (1-5): ")
-print("\n")
+    match opt:
+        case "1":
+            print("Opcion: Agregar nuevo registro", end="\n\n")
+            nuevo_registro()
+        case "2":
+            print("Opcion: Buscar un registro por su clave y mostrar sus valores", end="\n\n")
+            busca_valor_clave()
+        case "3":
+            print("Borrar un registro a partir de su clave", end="\n\n")
+            borrar_registro()
+        case "4":
+            print("Listar todos los registros en formato de tabla", end="\n\n")
+            tabla_diccionario()
+        case "5":
+            print("Adios")
+        case _:
+            print("Opcion no valida!", end="\n\n")
 
-match opt:
-    case "1":
-        print("Opcion: Agregar nuevo registro", end="\n\n")
-        nuevo_registro()
-    case "2":
-        print("Opcion: Buscar un registro por su clave y mostrar sus valores", end="\n\n")
-        busca_valor_clave()
-    case "3":
-        print("Borrar un registro a partir de su clave", end="\n\n")
-        borrar_registro()
-    case "4":
-        print("Listar todos los registros en formato de tabla", end="\n\n")
-        tabla_diccionario()
-
-    # case "5":
+    input("Precione una tecla para volver al menu")
 
 
 
