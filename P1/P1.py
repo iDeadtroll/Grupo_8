@@ -1,10 +1,10 @@
-# Usamos csv para
+# Usamos import csv para leer el dataset.
 import csv
 with open('8_ApartmentsLite.csv', 'r', encoding='utf-8') as archivo:
     contenido = csv.reader(archivo,delimiter=',')
 
 # Empesamos a leer el contenido desde la segunda linea
-    next(contenido)
+    next(contenido, None)
 #   Recorrido para construir el diccionario y la lista de los primeros valores de cada linea.
     diccionario1 = dict()
     lista_nums_registros = list()
@@ -53,16 +53,18 @@ def nuevo_registro():
     diccionario2[(tupla_list_nueva[0], tupla_list_nueva[-1])] = tupla_list_nueva
     diccionario1.update(diccionario2)
     print(diccionario1)
-
-
-#   Evaluar si el primer indice de la nueva lista y el primer indice de la tupla clave son iguales
+#   Evaluar si el nuevo registro existe, caso contrario se agrega el nuevo registro al diccionario.
 
     # print(tupla_list_nueva[0])
-    # valor = lista_valores.index(tupla_list_nueva[0])
+    valor = lista_valores.index(tupla_list_nueva[0])
     # print(valor)
     # print(lista_valores[valor])
-
-#     print("Registro no valido. El nuevo registro ya existen")
+    # if tupla_list_nueva[0] != lista_valores[valor]:
+    #     diccionario1.update(diccionario2)
+    #     # print(diccionario1)
+    # else:
+    #     print("Registro no valido. El numero de registro '" + tupla_list_nueva[0] + "' ya existe")
+    #     print("Pruebe con con un numero distinto de '" + tupla_list_nueva[0] + "'", end="\n\n")
 
 
 
@@ -100,8 +102,8 @@ def mostrarOpciones():
     print("5. Salir")
 
 # Menu que muestra las opciones y evalua la opcion seleccionada
-
-while True:
+s = True
+while s:
     print(mostrarOpciones())
     opt = input("Seleccione una opcion (1-5): ")
     print("\n")
@@ -120,9 +122,10 @@ while True:
             print("Listar todos los registros en formato de tabla", end="\n\n")
             tabla_diccionario()
         case "5":
+            s = False
             print("Adios")
         case _:
             print("Opcion no valida!", end="\n\n")
-
-    input("Precione una tecla para volver al menu")
+    if s is True:
+        input("Precione una tecla para volver al menu")
 
